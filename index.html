@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Hub - Freshly Brewed Daily</title>
+    <style>
+        /* Base Reset & Styling */
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f9f6f0; 
+            color: #4a3b32; 
+            line-height: 1.6; 
+        }
+        
+        /* Hero Header */
+        header { 
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200') no-repeat center center/cover;
+            color: #fff; 
+            text-align: center; 
+            padding: 5rem 1rem; 
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 3.5rem; 
+            color: #f1d5a5; 
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Container Layout */
+        .container { 
+            max-width: 800px; 
+            margin: 2rem auto; 
+            padding: 0 1.5rem; 
+        }
+        .card { 
+            background: #ffffff; 
+            padding: 2.5rem; 
+            border-radius: 12px; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+        }
+        h2 { 
+            color: #2c1e15; 
+            border-bottom: 2px solid #dfb76c; 
+            padding-bottom: 0.5rem; 
+            margin-top: 0;
+        }
+
+        /* Menu Design */
+        .menu-category {
+            margin-top: 1.5rem;
+        }
+        .menu-category h3 {
+            color: #8c6239;
+            margin-bottom: 0.5rem;
+        }
+        .menu-item { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 0.8rem; 
+            border-bottom: 1px dashed #e0dcd5;
+            padding-bottom: 0.3rem;
+        }
+        .menu-name { font-weight: 600; }
+        .menu-price { font-weight: bold; color: #8c6239; }
+
+        /* Footer */
+        footer { 
+            text-align: center; 
+            padding: 2rem; 
+            background: #2c1e15; 
+            color: #d1c7bd; 
+            font-size: 0.9rem; 
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Coffee Hub</h1>
+        <p>Your neighborhood escape for the perfect artisanal roast.</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- 1. INTRODUCTION CARD -->
+        <div class="card">
+            <h2>Our Story</h2>
+            <p>Welcome to Coffee Hub! We are dedicated to sourcing premium ethically-grown beans, roasted precisely to bring out rich, complex profiles. From our morning espresso selections to our custom-steeped cold brews, we provide a warm space designed for creators, students, and coffee aficionados alike.</p>
+        </div>
+
+        <!-- 2. MENU CARD -->
+        <div class="card">
+            <h2>The Brew Menu</h2>
+            
+            <div class="menu-category">
+                <h3>Espresso Classics</h3>
+                <div class="menu-item">
+                    <span class="menu-name">Espresso Shot</span>
+                    <span class="menu-price">Rs. 350</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Caffè Latte</span>
+                    <span class="menu-price">Rs. 550</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Cappuccino</span>
+                    <span class="menu-price">Rs. 580</span>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Specialties</h3>
+                <div class="menu-item">
+                    <span class="menu-name">Cold Brew Nitro</span>
+                    <span class="menu-price">Rs. 600</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Vanilla Sweet Cream Brew</span>
+                    <span class="menu-price">Rs. 650</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. TIMING & LOCATION CARD -->
+        <div class="card">
+            <h2>Find Us</h2>
+            <p><strong>Address:</strong> 456 Espresso Boulevard, Phase 5, Lahore, Pakistan</p>
+            <p><strong>Hours:</strong> Mon - Sun: 7:00 AM - 10:00 PM</p>
+            <p><strong>Contact:</strong> +92 42 111 222 333</p>
+        </div>
+        
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Coffee Hub. Crafted with passion.</p>
+    </footer>
+
+</body>
+</html>
