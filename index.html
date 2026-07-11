@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Hub | Premium Roasters</title>
+    <!-- FontAwesome for Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -25,7 +26,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Premium Header & Navigation */
+        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
@@ -45,19 +46,45 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
         .nav-links a {
             color: var(--text-light);
             text-decoration: none;
-            margin-left: 2rem;
             font-size: 0.95rem;
             letter-spacing: 1px;
             transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--accent-gold); }
 
-        /* Full Screen Hero Section */
+        /* Floating Cart Icon Icon */
+        .cart-icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.4rem;
+            cursor: pointer;
+            position: relative;
+            padding: 5px;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 7px;
+            border-radius: 50%;
+        }
+
+        /* Hero Section */
         .hero {
-            height: 80vh;
+            height: 70vh;
             background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -71,7 +98,6 @@
             text-transform: uppercase;
             letter-spacing: 4px;
             margin: 0;
-            color: #fff;
         }
         .hero h1 span { color: var(--accent-gold); }
         .hero p {
@@ -99,7 +125,7 @@
             box-shadow: 0 0 15px rgba(223, 183, 108, 0.4);
         }
 
-        /* Layout Architecture */
+        /* Layout Container */
         .container {
             max-width: 1200px;
             margin: 5rem auto;
@@ -111,7 +137,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 4rem;
-            color: #fff;
         }
         .section-title::after {
             content: '';
@@ -122,7 +147,7 @@
             margin: 10px auto 0 auto;
         }
 
-        /* 3D-Hover Product Catalog (Onyx Style) */
+        /* Product Catalog */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -134,25 +159,23 @@
             border-radius: 8px;
             padding: 2rem;
             text-align: center;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-            cursor: pointer;
-            position: relative;
-            perspective: 1000px; /* Crucial for 3D simulation */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s;
+            perspective: 1000px;
         }
         .product-card:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            transform: translateY(-10px) rotateX(4deg) rotateY(4deg);
             border-color: var(--accent-gold);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
         .product-card img {
-            width: 160px;
-            height: auto;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
             margin-bottom: 1.5rem;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
             transition: transform 0.3s;
         }
         .product-card:hover img {
-            transform: translateZ(30px) scale(1.05);
+            transform: scale(1.03);
         }
         .product-card h3 { margin: 1rem 0 0.5rem 0; font-size: 1.4rem; }
         .product-tag {
@@ -162,13 +185,13 @@
             letter-spacing: 2px;
         }
         .product-price {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin: 1rem 0;
             color: #fff;
         }
 
-        /* Interactive "Build Your Own Coffee" Customizer */
+        /* Interactive Customizer */
         .customizer-box {
             background: var(--card-dark);
             border: 1px solid #252525;
@@ -225,27 +248,53 @@
             border-color: var(--accent-gold);
             color: var(--accent-gold);
         }
-
         .visualizer-pane {
             background: #111;
             border: 1px dashed #333;
             padding: 3rem;
             border-radius: 8px;
             text-align: center;
-            height: 250px;
+            height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-        .cup-icon {
-            font-size: 5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-            transition: transform 0.5s ease;
+        .cup-icon { font-size: 4rem; color: var(--accent-gold); margin-bottom: 1rem; transition: transform 0.5s ease; }
+
+        /* Slide Out Cart Panel Drawer */
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 360px;
+            height: 100%;
+            background: #141414;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.7);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 2.5rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid #252525;
         }
-        
-        /* Reviews Carousel Slider */
+        .cart-panel.open { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2a2a; padding-bottom: 1.2rem; }
+        .close-cart { background: transparent; border: none; color: white; font-size: 1.8rem; cursor: pointer; }
+        .cart-items { flex-grow: 1; overflow-y: auto; margin-top: 1.5rem; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 1.2rem; border-bottom: 1px dashed #2a2a2a; padding-bottom: 0.6rem; font-size: 0.95rem;}
+        .cart-total { font-size: 1.3rem; font-weight: bold; margin: 1.5rem 0; text-align: right; color: var(--accent-gold); }
+
+        /* Embedded Form UI */
+        .checkout-form { display: none; flex-direction: column; gap: 0.9rem; margin-top: 1rem; }
+        .checkout-form.active { display: flex; animation: fadeIn 0.4s ease; }
+        .checkout-form input, .checkout-form textarea {
+            background: #1f1f1f; border: 1px solid #333; color: white; padding: 0.75rem; border-radius: 4px; font-size: 0.9rem; outline: none;
+        }
+        .checkout-form input:focus, .checkout-form textarea:focus { border-color: var(--accent-gold); }
+
+        /* Reviews Carousel */
         .reviews-container {
             position: relative;
             background: var(--card-dark);
@@ -257,149 +306,122 @@
             border: 1px solid #252525;
         }
         .review-slide { display: none; }
-        .review-slide.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        .review-slide.active { display: block; animation: fadeIn 0.5s ease; }
         .review-text { font-style: italic; font-size: 1.2rem; color: #e0e0e0; }
-        .review-author { margin-top: 1.5rem; color: var(--accent-gold); font-weight: 600; letter-spacing: 1px; }
+        .review-author { margin-top: 1.5rem; color: var(--accent-gold); font-weight: 600; }
         .carousel-dots { margin-top: 2rem; display: flex; justify-content: center; gap: 0.5rem; }
         .dot { width: 10px; height: 10px; background: #444; border-radius: 50%; cursor: pointer; }
         .dot.active { background: var(--accent-gold); }
 
-        /* Brewing Guide Accordion */
-        .accordion-item {
-            background: var(--card-dark);
-            border: 1px solid #252525;
-            margin-bottom: 1rem;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        .accordion-header {
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 600;
-            background: #1e1e1e;
-        }
-        .accordion-content {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+        /* Accordion */
+        .accordion-item { background: var(--card-dark); border: 1px solid #252525; margin-bottom: 1rem; border-radius: 6px; overflow: hidden; }
+        .accordion-header { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; background: #1e1e1e; }
+        .accordion-content { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; color: var(--text-muted); }
 
-        footer {
-            background: #080808;
-            padding: 4rem 10% 2rem 10%;
-            border-top: 1px solid #1a1a1a;
-            text-align: center;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            text-align: left;
-            margin-bottom: 3rem;
-        }
+        footer { background: #080808; padding: 4rem 10% 2rem 10%; border-top: 1px solid #1a1a1a; text-align: center; margin-top: 6rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: left; }
         .footer-col h4 { color: #fff; text-transform: uppercase; margin-bottom: 1.5rem; letter-spacing: 1px;}
-        .footer-col p, .footer-col a { color: var(--text-muted); text-decoration: none; display: block; margin-bottom: 0.8rem;}
+        .footer-col p { color: var(--text-muted); margin-bottom: 0.8rem;}
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
+    <!-- NAV BAR -->
     <nav>
         <div class="logo">Coffee Hub</div>
         <div class="nav-links">
             <a href="#catalog">Catalog</a>
             <a href="#customizer">Customizer</a>
             <a href="#guides">Brew Guides</a>
+            <button class="cart-icon-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </button>
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <div class="hero">
         <h1>Artisanal <span>Roasts</span></h1>
-        <p>Experience precision-engineered specialty coffee sourcing beans directly from single-origin microscopic estates.</p>
+        <p>Experience precision-engineered specialty coffee sourcing beans directly from single-origin estates.</p>
         <button class="btn-gold" onclick="document.getElementById('catalog').scrollIntoView();">Explore Catalog</button>
     </div>
 
     <div class="container">
         
+        <!-- LUXURY CATALOG SECTION -->
         <section id="catalog" style="margin-bottom: 8rem;">
             <h2 class="section-title">The Master Collection</h2>
             <div class="catalog-grid">
                 
                 <div class="product-card">
                     <span class="product-tag">Single Origin</span>
-                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=400" alt="Coffee Bag" style="width:100%; border-radius: 6px; object-fit: cover; height: 180px;">
+                    <img src="espresso.png" alt="Onyx Eclipse">
                     <h3>Onyx Eclipse</h3>
                     <p class="product-tag">Notes: Dark Chocolate, Plum</p>
                     <div class="product-price">Rs. 2,450</div>
-                    <button class="btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Add to Cart</button>
+                    <button class="btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;" onclick="addToCart('Onyx Eclipse', 2450)">Add to Cart</button>
                 </div>
 
                 <div class="product-card">
                     <span class="product-tag">Micro-Lot</span>
-                    <img src="https://images.unsplash.com/photo-1587049016473-b1ec904f67b7?q=80&w=400" alt="Coffee Bag" style="width:100%; border-radius: 6px; object-fit: cover; height: 180px;">
+                    <img src="latte.png" alt="Ethio Rose">
                     <h3>Ethio Rose</h3>
                     <p class="product-tag">Notes: Jasmine, Bergamot</p>
                     <div class="product-price">Rs. 2,800</div>
-                    <button class="btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Add to Cart</button>
+                    <button class="btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;" onclick="addToCart('Ethio Rose', 2800)">Add to Cart</button>
                 </div>
 
                 <div class="product-card">
                     <span class="product-tag">Limited Edition</span>
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400" alt="Coffee Bag" style="width:100%; border-radius: 6px; object-fit: cover; height: 180px;">
+                    <img src="geisha.png" alt="Geisha Estate">
                     <h3>Geisha Estate</h3>
                     <p class="product-tag">Notes: Honey, Lemongrass</p>
                     <div class="product-price">Rs. 4,200</div>
-                    <button class="btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Add to Cart</button>
+                    <button class="btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;" onclick="addToCart('Geisha Estate', 4200)">Add to Cart</button>
                 </div>
 
             </div>
         </section>
 
+        <!-- INTERACTIVE CUSTOMIZER -->
         <section id="customizer" style="margin-bottom: 8rem;">
             <h2 class="section-title">Build Your Brew</h2>
             <div class="customizer-box">
                 <div class="customizer-controls">
-                    
                     <div class="control-group">
                         <label>Roast Profile: <span id="roast-val" style="color:var(--accent-gold)">Medium</span></label>
                         <input type="range" min="1" max="3" value="2" class="slider" id="roastSlider">
                     </div>
-
                     <div class="control-group">
                         <label>Milk Base</label>
                         <div class="selector-btns">
                             <button class="select-btn active" onclick="setMilk(this, 'None')">None</button>
                             <button class="select-btn" onclick="setMilk(this, 'Oat Milk')">Oat Milk</button>
-                            <button class="select-btn" onclick="setMilk(this, 'Dairy Whole')">Almond</button>
+                            <button class="select-btn" onclick="setMilk(this, 'Almond')">Almond</button>
                         </div>
                     </div>
-
                     <div class="control-group">
                         <label>Flavor Shot Profile</label>
                         <div class="selector-btns">
                             <button class="select-btn active" onclick="setFlavor(this, 'Pure')">Pure</button>
-                            <button class="select-btn" onclick="setFlavor(this, 'Gold Vanilla')">Vanilla</button>
-                            <button class="select-btn" onclick="setFlavor(this, 'Salted Caramel')">Caramel</button>
+                            <button class="select-btn" onclick="setFlavor(this, 'Vanilla')">Vanilla</button>
+                            <button class="select-btn" onclick="setFlavor(this, 'Caramel')">Caramel</button>
                         </div>
                     </div>
-
                 </div>
-
                 <div class="visualizer-pane">
                     <i class="fa-solid fa-mug-hot cup-icon" id="cup-preview"></i>
                     <h3 id="summary-title" style="margin:0;">Custom Craft Roast</h3>
                     <p id="summary-desc" style="color: var(--text-muted); font-size: 0.9rem; margin-top:0.5rem;">Medium Roast • Black • Raw Profile</p>
+                    <button class="btn-gold" style="padding: 0.3rem 1rem; font-size: 0.75rem; margin-top: 1rem;" onclick="addCustomToCart()">Add Custom Brew</button>
                 </div>
             </div>
         </section>
 
+        <!-- REVIEWS SLIDER -->
         <section style="margin-bottom: 8rem;">
             <h2 class="section-title">Connoisseur Notes</h2>
             <div class="reviews-container">
@@ -418,9 +440,9 @@
             </div>
         </section>
 
+        <!-- BREWING GUIDE ACCORDION -->
         <section id="guides" style="margin-bottom: 5rem;">
             <h2 class="section-title">Extraction Manuals</h2>
-            
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
                     <span>01. The Perfect V60 Pour Over Technique</span>
@@ -430,7 +452,6 @@
                     <p>Maintain a strict water-to-coffee ratio of 1:16. Utilize water precisely heated to 93°C. Pour in circular concentric pathways starting from center outward to avoid edge channeling during extraction stages.</p>
                 </div>
             </div>
-
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
                     <span>02. Extraction Mechanics for Cold Nitro Extraction</span>
@@ -440,11 +461,40 @@
                     <p>Coarse grounds steep dynamically under ambient thermal containment for a continuous 18-hour cycle. Double filter before forcing nitrogen saturation at 45 PSI to achieve the signature cascading finish.</p>
                 </div>
             </div>
-
         </section>
 
     </div>
 
+    <!-- SIDE SLIDE OUT CART DRAWER PANEL -->
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h3>Order Vault</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items-list">
+            <p style="color:var(--text-muted); text-align: center; margin-top: 2rem;">Your drawer is currently empty.</p>
+        </div>
+        <div class="cart-total" id="cart-total-price">Total: Rs. 0</div>
+        
+        <button class="btn-gold" id="checkout-step-btn" onclick="showCheckoutForm()" style="width:100%; margin-top: 1rem;">Proceed to Checkout</button>
+
+        <!-- AUTOMATED GOOGLE SHEET INTEGRATION FORM -->
+        <form class="checkout-form" id="checkout-form-element" action="https://api.sheetmonkey.io/form/iVmP9mkPUuykQ8soGTdF6T" method="POST">
+            <!-- Hidden Fields tracking automated checkout items dynamically -->
+            <input type="hidden" name="Order_Items" id="form-order-summary">
+            <input type="hidden" name="Milk_Bases" id="form-milk-summary">
+            <input type="hidden" name="Flavor_Shots" id="form-flavor-summary">
+            <input type="hidden" name="Invoice_Total" id="form-total-amount">
+            
+            <input type="text" name="Client_Name" placeholder="Full Name" required>
+            <input type="tel" name="Contact_No" placeholder="WhatsApp / Mobile Number" required>
+            <textarea name="Shipping_Address" placeholder="Full Home/Office Address" rows="3" required></textarea>
+            
+            <button type="submit" class="btn-gold" style="background:var(--accent-gold); color:black; border:none; margin-top: 0.5rem;">Confirm & Submit Order</button>
+        </form>
+    </div>
+
+    <!-- PREMIUM FOOTER -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -462,15 +512,80 @@
                 <p>Phase 5, DHA, Lahore, Pakistan</p>
             </div>
         </div>
-        <p style="color: #333; font-size: 0.8rem; margin-top: 3rem;">&copy; 2026 COFFEE HUB ROASTERS. DATA MANAGEMENT SPECIFIED VIA STATIC ENCRYPTION.</p>
+        <p style="color: #222; font-size: 0.8rem; margin-top: 3rem;">&copy; 2026 COFFEE HUB ROASTERS. DATA ROUTED TO SECURE CONNECTED AGGREGATOR.</p>
     </footer>
 
+    <!-- INTERACTIVE ENGINE LOGIC -->
     <script>
-        // Customizer Core Data States
-        let currentRoast = "Medium";
-        let currentMilk = "Black";
+        let cart = [];
+        // Customizer Initial States
+        let currentRoast = "Medium Roast"; 
+        let currentMilk = "Black"; 
         let currentFlavor = "Raw Profile";
 
+        function toggleCart() {
+            document.getElementById('cart-panel').classList.toggle('open');
+        }
+
+        function addToCart(name, price, milk = "Standard", flavor = "Standard") {
+            cart.push({name, price, milk, flavor});
+            updateCartUI();
+            document.getElementById('cart-panel').classList.add('open');
+        }
+
+        function addCustomToCart() {
+            let name = `Custom Brew (${currentRoast})`;
+            addToCart(name, 750, currentMilk, currentFlavor);
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const list = document.getElementById('cart-items-list');
+            const totalText = document.getElementById('cart-total-price');
+            
+            if(cart.length === 0) {
+                list.innerHTML = `<p style="color:var(--text-muted); text-align: center; margin-top: 2rem;">Your drawer is currently empty.</p>`;
+                totalText.innerText = "Total: Rs. 0";
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            let summaryNames = [];
+            let milkSelections = [];
+            let flavorSelections = [];
+
+            cart.forEach(item => {
+                html += `<div class="cart-item">
+                            <div>
+                                <strong>${item.name}</strong><br>
+                                <small style="color:var(--accent-gold)">M: ${item.milk} | F: ${item.flavor}</small>
+                            </div>
+                            <span>Rs. ${item.price}</span>
+                         </div>`;
+                total += item.price;
+                summaryNames.push(item.name);
+                milkSelections.push(item.milk);
+                flavorSelections.push(item.flavor);
+            });
+
+            list.innerHTML = html;
+            totalText.innerText = `Total: Rs. ${total}`;
+
+            // Sync structural information securely into hidden custom fields for Google Sheets
+            document.getElementById('form-order-summary').value = summaryNames.join(' + ');
+            document.getElementById('form-milk-summary').value = milkSelections.join(', ');
+            document.getElementById('form-flavor-summary').value = flavorSelections.join(', ');
+            document.getElementById('form-total-amount').value = `Rs. ${total}`;
+        }
+
+        function showCheckoutForm() {
+            if(cart.length === 0) return alert("Please populate your item vault before proceeding.");
+            document.getElementById('checkout-form-element').classList.add('active');
+            document.getElementById('checkout-step-btn').style.display = 'none';
+        }
+
+        // Customizer Mechanics
         const roastSlider = document.getElementById('roastSlider');
         const roastVal = document.getElementById('roast-val');
         const cupPreview = document.getElementById('cup-preview');
@@ -485,54 +600,25 @@
             updateSummary();
         });
 
-        function setMilk(btn, value) {
-            clearActive(btn);
-            currentMilk = value === 'None' ? 'Black' : value;
-            updateSummary();
-        }
+        function setMilk(btn, value) { clearActive(btn); currentMilk = value === 'None' ? 'Black' : value; updateSummary(); }
+        function setFlavor(btn, value) { clearActive(btn); currentFlavor = value === 'Pure' ? 'Raw Profile' : value; updateSummary(); }
+        function clearActive(button) { button.parentElement.querySelectorAll('.select-btn').forEach(s => s.classList.remove('active')); button.classList.add('active'); }
+        function updateSummary() { summaryDesc.innerText = `${currentRoast} • ${currentMilk} • ${currentFlavor}`; }
 
-        function setFlavor(btn, value) {
-            clearActive(btn);
-            currentFlavor = value === 'Pure' ? 'Raw Profile' : value;
-            updateSummary();
-        }
-
-        function clearActive(button) {
-            const siblings = button.parentElement.querySelectorAll('.select-btn');
-            siblings.forEach(s => s.classList.remove('active'));
-            button.classList.add('active');
-        }
-
-        function updateSummary() {
-            summaryDesc.innerText = `${currentRoast} • ${currentMilk} • ${currentFlavor}`;
-            cupPreview.style.transform = "scale(1.1) rotate(5deg)";
-            setTimeout(() => cupPreview.style.transform = "scale(1) rotate(0deg)", 200);
-        }
-
-        // Reviews Switch Engine
-        const slides = document.querySelectorAll('.review-slide');
-        const dots = document.querySelectorAll('.dot');
+        // Testimonial Engine
+        const slides = document.querySelectorAll('.review-slide'); const dots = document.querySelectorAll('.dot');
         function switchReview(index) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
+            slides.forEach(s => s.classList.remove('active')); dots.forEach(d => d.classList.remove('active'));
+            slides[index].classList.add('active'); dots[index].classList.add('active');
         }
 
-        // Accordion Animation Engine
+        // Accordion Engine
         function toggleAccordion(header) {
-            const content = header.nextElementSibling;
-            const icon = header.querySelector('i');
+            const content = header.nextElementSibling; const icon = header.querySelector('i');
             if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-                content.style.maxHeight = '0px';
-                content.style.paddingTop = '0px';
-                content.style.paddingBottom = '0px';
-                icon.style.transform = 'rotate(0deg)';
+                content.style.maxHeight = '0px'; icon.style.transform = 'rotate(0deg)';
             } else {
-                content.style.maxHeight = content.scrollHeight + 40 + 'px';
-                content.style.paddingTop = '1rem';
-                content.style.paddingBottom = '1.5rem';
-                icon.style.transform = 'rotate(180deg)';
+                content.style.maxHeight = content.scrollHeight + 'px'; icon.style.transform = 'rotate(180deg)';
             }
         }
     </script>
