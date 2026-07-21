@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -8,137 +9,140 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.15);
+        }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #1f2937;
+            background: #090d16;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #4b5563;
-            border-radius: 3px;
+            background: #26334d;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans min-h-screen flex flex-col justify-between">
+<body class="bg-[#070a11] text-gray-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-black">
 
     <!-- NAVIGATION BAR -->
-    <nav class="bg-gray-900/90 backdrop-blur-md border-b border-gray-800 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-mug-hot text-amber-500 text-2xl"></i>
-                    <span class="font-bold text-xl tracking-wide text-white">Coffee-Hub</span>
+    <nav class="bg-[#090d16]/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-mug-hot text-gray-950 text-xl"></i>
                 </div>
-
-                <!-- Nav Links -->
-                <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="#menu" class="hover:text-amber-500 transition-colors">Menu</a>
-                    <a href="#store" class="hover:text-amber-500 transition-colors">Store Beans</a>
-                    <a href="#about" class="hover:text-amber-500 transition-colors">About Us</a>
-                </div>
-
-                <!-- Cart Button -->
-                <button onclick="toggleCartModal(true)" class="relative p-2.5 text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-700 rounded-xl transition-all">
-                    <i class="fa-solid fa-cart-shopping text-lg"></i>
-                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-amber-500 text-gray-950 text-xs font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-gray-900">0</span>
-                </button>
+                <span class="font-extrabold text-2xl tracking-tight text-white">Coffee<span class="text-amber-500">.</span>Hub</span>
             </div>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center gap-10 font-semibold text-sm text-gray-300">
+                <a href="#menu" class="hover:text-amber-400 transition-colors">Menu</a>
+                <a href="#store" class="hover:text-amber-400 transition-colors">Store Beans</a>
+                <a href="#about" class="hover:text-amber-400 transition-colors">About Us</a>
+            </div>
+
+            <!-- Cart Trigger -->
+            <button onclick="toggleCartModal(true)" class="relative group p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl transition-all">
+                <i class="fa-solid fa-bag-shopping text-amber-400 text-lg group-hover:scale-110 transition-transform"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-gradient-to-r from-amber-500 to-amber-600 text-gray-950 font-black text-xs w-6 h-6 rounded-full flex items-center justify-center border-2 border-[#070a11] shadow-md">0</span>
+            </button>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative bg-gray-900 py-24 border-b border-gray-800 overflow-hidden">
-        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <span class="inline-block bg-amber-500/10 text-amber-400 text-xs font-semibold px-3 py-1 rounded-full border border-amber-500/20 mb-4">
-                Freshly Roasted Daily
+    <section class="relative py-28 overflow-hidden border-b border-white/5">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,#1e1b18_0%,transparent_70%)] opacity-80"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-semibold text-xs uppercase tracking-widest mb-6">
+                <i class="fa-solid fa-sparkles"></i> Premium Artisanal Roasts
             </span>
-            <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
-                Brewed to Perfection, Delivered to You.
+            <h1 class="text-5xl sm:text-7xl font-black text-white tracking-tight leading-tight mb-6">
+                Brewed to Perfection,<br/><span class="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent">Delivered to You.</span>
             </h1>
-            <p class="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-8">
-                Explore our signature espresso line-up, specialty milk bases, and single-origin beans synced live to our ordering system.
+            <p class="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                Explore our signature espresso line-up, craft milk bases, and specialty beans directly integrated with our live order system.
             </p>
-            <a href="#menu" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold px-8 py-3.5 rounded-xl transition-all transform hover:scale-105 shadow-lg shadow-amber-500/10">
-                <span>Explore Menu</span>
-                <i class="fa-solid fa-arrow-down text-sm"></i>
-            </a>
+            <div class="flex items-center justify-center gap-4">
+                <a href="#menu" class="px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-gray-950 font-bold rounded-2xl shadow-xl shadow-amber-500/20 hover:scale-105 transition-all">
+                    Explore Menu
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- MENU SECTION -->
-    <section id="menu" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between mb-8">
-            <div>
-                <h2 class="text-3xl font-bold text-white border-l-4 border-amber-500 pl-4">Signature Drinks</h2>
-                <p class="text-gray-400 text-sm mt-1 pl-4">Crafted handcrafted beverages</p>
-            </div>
+    <section id="menu" class="py-20 max-w-7xl mx-auto px-6">
+        <div class="mb-12">
+            <h2 class="text-3xl font-extrabold text-white tracking-tight">Signature Drinks</h2>
+            <p class="text-gray-400 text-sm mt-1">Handcrafted espresso beverages prepared on order</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="menu-items">
-            <!-- Dynamic Menu Cards Populated via JS -->
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="menu-items"></div>
     </section>
 
     <!-- STORE SECTION -->
-    <section id="store" class="py-16 bg-gray-900/40 border-t border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between mb-8">
-                <div>
-                    <h2 class="text-3xl font-bold text-white border-l-4 border-amber-500 pl-4">Store Beans</h2>
-                    <p class="text-gray-400 text-sm mt-1 pl-4">Whole bean & espresso roast bags</p>
-                </div>
+    <section id="store" class="py-20 bg-[#090d16]/50 border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl font-extrabold text-white tracking-tight">Store Beans</h2>
+                <p class="text-gray-400 text-sm mt-1">Whole bean & roasted coffee packages</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="store-items">
-                <!-- Dynamic Store Cards Populated via JS -->
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="store-items"></div>
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="bg-gray-900 border border-gray-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
-            <h2 class="text-3xl font-bold text-white mb-4">About Coffee-Hub</h2>
-            <p class="text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                Welcome to Coffee-Hub! We source artisanal single-origin beans and roast them carefully to highlight their unique flavors. Place your order online, choose custom milk & flavor add-ons, and track it live.
+    <section id="about" class="py-20 max-w-5xl mx-auto px-6 text-center">
+        <div class="glass-card rounded-3xl p-10 sm:p-14 relative">
+            <h2 class="text-3xl font-extrabold text-white mb-4">About Coffee-Hub</h2>
+            <p class="text-gray-400 text-base leading-relaxed max-w-2xl mx-auto">
+                Dedicated to sourcing artisanal single-origin coffee beans and roasting them to showcase their distinct flavor profiles. Customize your milk base and shots directly online.
             </p>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-gray-900 border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
+    <footer class="border-t border-white/5 py-8 text-center text-xs text-gray-500">
         <p>&copy; 2026 Coffee-Hub. All Rights Reserved.</p>
     </footer>
 
     <!-- CART MODAL -->
-    <div id="cart-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl max-w-lg w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+    <div id="cart-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card rounded-3xl max-w-md w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl border border-white/10">
             
-            <!-- Modal Header -->
-            <div class="p-4 border-b border-gray-800 flex justify-between items-center bg-gray-950">
-                <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-shopping-bag text-amber-500"></i> Your Order
+            <!-- Header -->
+            <div class="p-5 border-b border-white/10 flex justify-between items-center bg-black/40">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-cart-flatbed text-amber-500"></i> Your Cart
                 </h3>
-                <button onclick="toggleCartModal(false)" class="text-gray-400 hover:text-white text-xl">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="toggleCartModal(false)" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
 
-            <!-- Modal Body / Cart Items -->
-            <div class="p-4 flex-1 overflow-y-auto custom-scrollbar space-y-3" id="cart-contents">
-                <!-- Cart items render here -->
-            </div>
+            <!-- Items -->
+            <div class="p-5 flex-1 overflow-y-auto custom-scrollbar space-y-3" id="cart-contents"></div>
 
-            <!-- Customizations & Order Form -->
-            <div class="p-4 border-t border-gray-800 bg-gray-950 space-y-4">
-                
-                <!-- Milk & Flavor Customizations -->
+            <!-- Checkout Form -->
+            <div class="p-5 border-t border-white/10 bg-black/40 space-y-4">
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-semibold text-gray-400 mb-1">Milk Base</label>
-                        <select id="milk-base" onchange="updateCartCalculations()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2 text-xs focus:outline-none focus:border-amber-500">
+                        <select id="milk-base" onchange="updateCartCalculations()" class="w-full bg-[#070a11] border border-white/10 text-white rounded-xl p-2.5 text-xs focus:outline-none focus:border-amber-500">
                             <option value="Standard">Standard Whole Milk</option>
                             <option value="Oat Milk (+Rs 150)">Oat Milk (+Rs 150)</option>
                             <option value="Almond Milk (+Rs 150)">Almond Milk (+Rs 150)</option>
@@ -147,7 +151,7 @@
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-400 mb-1">Flavor Shot</label>
-                        <select id="flavor-shot" onchange="updateCartCalculations()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2 text-xs focus:outline-none focus:border-amber-500">
+                        <select id="flavor-shot" onchange="updateCartCalculations()" class="w-full bg-[#070a11] border border-white/10 text-white rounded-xl p-2.5 text-xs focus:outline-none focus:border-amber-500">
                             <option value="Standard">None / Standard</option>
                             <option value="Vanilla (+Rs 100)">Vanilla (+Rs 100)</option>
                             <option value="Caramel (+Rs 100)">Caramel (+Rs 100)</option>
@@ -156,25 +160,17 @@
                     </div>
                 </div>
 
-                <!-- Customer Details Form -->
                 <form id="checkout-form" onsubmit="handleCheckout(event)" class="space-y-3">
-                    <div>
-                        <input type="text" id="client-name" required placeholder="Full Name" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2.5 text-sm focus:outline-none focus:border-amber-500">
-                    </div>
-                    <div>
-                        <input type="tel" id="contact-no" required placeholder="Phone Number" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2.5 text-sm focus:outline-none focus:border-amber-500">
-                    </div>
-                    <div>
-                        <textarea id="shipping-address" required rows="2" placeholder="Delivery Address" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2.5 text-sm focus:outline-none focus:border-amber-500"></textarea>
+                    <input type="text" id="client-name" required placeholder="Full Name" class="w-full bg-[#070a11] border border-white/10 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-500">
+                    <input type="tel" id="contact-no" required placeholder="Phone Number" class="w-full bg-[#070a11] border border-white/10 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-500">
+                    <textarea id="shipping-address" required rows="2" placeholder="Delivery Address" class="w-full bg-[#070a11] border border-white/10 text-white rounded-xl p-3 text-xs focus:outline-none focus:border-amber-500"></textarea>
+
+                    <div class="flex justify-between items-center py-2 border-t border-b border-white/10">
+                        <span class="text-xs text-gray-400 font-semibold">Total Invoice:</span>
+                        <span id="invoice-total" class="text-lg font-black text-amber-400">Rs. 0</span>
                     </div>
 
-                    <!-- Total Display -->
-                    <div class="flex justify-between items-center py-2 border-t border-b border-gray-800">
-                        <span class="text-gray-400 font-medium text-sm">Invoice Total:</span>
-                        <span id="invoice-total" class="text-xl font-extrabold text-amber-500">Rs. 0</span>
-                    </div>
-
-                    <button type="submit" id="submit-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold py-3 rounded-xl transition-all">
+                    <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-gray-950 font-extrabold py-3.5 rounded-xl hover:shadow-lg hover:shadow-amber-500/20 transition-all">
                         Place Order & Sync to Sheet
                     </button>
                 </form>
@@ -182,73 +178,38 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- SCRIPT LOGIC -->
     <script>
         const SHEETMONKEY_URL = "https://api.sheetmonkey.io/form/iVmP9mkPUuykQ8soGTdF6T";
 
-        // Menu Data with High-Quality Unsplash Coffee Images
         const menuProducts = [
-            { 
-                id: 1, 
-                name: "Aura Espresso", 
-                price: 850, 
-                desc: "Rich double shot espresso with a velvety, caramel-colored crema.", 
-                image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=600&q=80" 
-            },
-            { 
-                id: 2, 
-                name: "Caramel Macchiato", 
-                price: 1150, 
-                desc: "Freshly steamed milk with vanilla syrup, marked with espresso and caramel.", 
-                image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" 
-            },
-            { 
-                id: 3, 
-                name: "Iced Spanish Latte", 
-                price: 1250, 
-                desc: "Smooth espresso poured over chilled sweetened milk and fresh ice.", 
-                image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" 
-            }
+            { id: 1, name: "Aura Espresso", price: 850, desc: "Rich double shot espresso with a velvety crema.", image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "Caramel Macchiato", price: 1150, desc: "Steamed milk layered with vanilla and espresso drizzle.", image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, name: "Iced Spanish Latte", price: 1250, desc: "Condensed milk espresso blend over chilled ice.", image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" }
         ];
 
-        // Store Data with High-Quality Roasted Bean Images
         const storeProducts = [
-            { 
-                id: 4, 
-                name: "Onyx Eclipse Blend (250g)", 
-                price: 2450, 
-                desc: "Dark roasted signature Arabica beans featuring deep cacao undertones.", 
-                image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=600&q=80" 
-            },
-            { 
-                id: 5, 
-                name: "Ethiopian Yirgacheffe (250g)", 
-                price: 2800, 
-                desc: "Light-medium roast with delicate jasmine floral notes and bright citrus acidity.", 
-                image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80" 
-            }
+            { id: 4, name: "Onyx Eclipse Blend (250g)", price: 2450, desc: "Dark roasted Arabica beans with cacao undertones.", image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, name: "Ethiopian Yirgacheffe (250g)", price: 2800, desc: "Light-medium roast with floral jasmine notes.", image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80" }
         ];
 
         let cart = [];
 
-        // Render Cards with Product Images
         function initApp() {
-            const menuContainer = document.getElementById("menu-items");
-            const storeContainer = document.getElementById("store-items");
-
-            menuContainer.innerHTML = menuProducts.map(p => `
-                <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-amber-500/50 transition-all group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            document.getElementById("menu-items").innerHTML = menuProducts.map(p => `
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between transition-all group">
+                    <div class="h-52 overflow-hidden relative">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#070a11] via-transparent to-transparent"></div>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-white mb-1">${p.name}</h3>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">${p.desc}</p>
+                            <h3 class="text-xl font-bold text-white mb-2">${p.name}</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">${p.desc}</p>
                         </div>
-                        <div class="flex justify-between items-center pt-2 border-t border-gray-800">
-                            <span class="text-lg font-extrabold text-amber-500">Rs. ${p.price}</span>
-                            <button onclick="addToCart(${p.id})" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all">
+                        <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                            <span class="text-lg font-black text-amber-400">Rs. ${p.price}</span>
+                            <button onclick="addToCart(${p.id})" class="px-4 py-2 bg-white/10 hover:bg-amber-500 hover:text-gray-950 text-white font-bold text-xs rounded-xl transition-all">
                                 Add to Cart
                             </button>
                         </div>
@@ -256,19 +217,19 @@
                 </div>
             `).join('');
 
-            storeContainer.innerHTML = storeProducts.map(p => `
-                <div class="bg-gray-950 border border-gray-800 rounded-2xl overflow-hidden flex flex-col sm:flex-row justify-between hover:border-amber-500/50 transition-all group">
+            document.getElementById("store-items").innerHTML = storeProducts.map(p => `
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col sm:flex-row justify-between transition-all group">
                     <div class="sm:w-2/5 h-48 sm:h-auto overflow-hidden relative">
-                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="p-5 sm:w-3/5 flex flex-col justify-between">
+                    <div class="p-6 sm:w-3/5 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-xl font-bold text-white mb-1">${p.name}</h3>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">${p.desc}</p>
+                            <h3 class="text-xl font-bold text-white mb-2">${p.name}</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed mb-6">${p.desc}</p>
                         </div>
-                        <div class="flex justify-between items-center pt-2 border-t border-gray-800">
-                            <span class="text-lg font-extrabold text-amber-500">Rs. ${p.price}</span>
-                            <button onclick="addToCart(${p.id})" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all">
+                        <div class="flex justify-between items-center pt-4 border-t border-white/5">
+                            <span class="text-lg font-black text-amber-400">Rs. ${p.price}</span>
+                            <button onclick="addToCart(${p.id})" class="px-4 py-2 bg-white/10 hover:bg-amber-500 hover:text-gray-950 text-white font-bold text-xs rounded-xl transition-all">
                                 Add to Cart
                             </button>
                         </div>
@@ -277,7 +238,6 @@
             `).join('');
         }
 
-        // Cart Functions
         function addToCart(productId) {
             const allProducts = [...menuProducts, ...storeProducts];
             const item = allProducts.find(p => p.id === productId);
@@ -307,17 +267,17 @@
             document.getElementById("cart-count").innerText = cart.reduce((acc, c) => acc + c.qty, 0);
 
             if (cart.length === 0) {
-                cartContainer.innerHTML = `<p class="text-gray-500 text-center py-8">Your cart is empty.</p>`;
+                cartContainer.innerHTML = `<p class="text-gray-500 text-center py-8 text-xs">Your cart is empty.</p>`;
                 updateCartCalculations();
                 return;
             }
 
             cartContainer.innerHTML = cart.map(item => `
-                <div class="flex items-center gap-3 bg-gray-950 p-2.5 rounded-xl border border-gray-800">
-                    <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-lg object-cover">
+                <div class="flex items-center gap-3 bg-black/40 p-2.5 rounded-2xl border border-white/5">
+                    <img src="${item.image}" alt="${item.name}" class="w-10 h-10 rounded-xl object-cover">
                     <div class="flex-1">
                         <h4 class="font-bold text-white text-xs">${item.name}</h4>
-                        <span class="text-xs text-amber-500 font-semibold">Rs. ${item.price} x ${item.qty}</span>
+                        <span class="text-xs text-amber-400 font-semibold">Rs. ${item.price} x ${item.qty}</span>
                     </div>
                     <button onclick="removeFromCart(${item.id})" class="p-2 text-gray-500 hover:text-red-400 transition-colors">
                         <i class="fa-solid fa-trash text-xs"></i>
@@ -330,7 +290,6 @@
 
         function updateCartCalculations() {
             const baseTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            
             const milkVal = document.getElementById("milk-base").value;
             const flavorVal = document.getElementById("flavor-shot").value;
 
@@ -342,58 +301,43 @@
             document.getElementById("invoice-total").innerText = `Rs. ${grandTotal}`;
         }
 
-        // Checkout & SheetMonkey Integration
         async function handleCheckout(e) {
             e.preventDefault();
-            
-            if (cart.length === 0) {
-                alert("Please add items to your cart before placing an order!");
-                return;
-            }
+            if (cart.length === 0) return alert("Please add items to your cart first!");
 
             const submitBtn = document.getElementById("submit-btn");
             submitBtn.disabled = true;
             submitBtn.innerText = "Syncing Order...";
 
-            const orderItems = cart.map(c => `${c.name} (x${c.qty})`).join(", ");
-            const milkBases = document.getElementById("milk-base").value;
-            const flavorShots = document.getElementById("flavor-shot").value;
-            const invoiceTotal = document.getElementById("invoice-total").innerText;
-            const clientName = document.getElementById("client-name").value;
-            const contactNo = document.getElementById("contact-no").value;
-            const shippingAddress = document.getElementById("shipping-address").value;
-
             const payload = {
-                Order_Items: orderItems,
-                Milk_Bases: milkBases,
-                Flavor_Shots: flavorShots,
-                Invoice_Total: invoiceTotal,
-                Client_Name: clientName,
-                Contact_No: contactNo,
-                Shipping_Address: shippingAddress
+                Order_Items: cart.map(c => `${c.name} (x${c.qty})`).join(", "),
+                Milk_Bases: document.getElementById("milk-base").value,
+                Flavor_Shots: document.getElementById("flavor-shot").value,
+                Invoice_Total: document.getElementById("invoice-total").innerText,
+                Client_Name: document.getElementById("client-name").value,
+                Contact_No: document.getElementById("contact-no").value,
+                Shipping_Address: document.getElementById("shipping-address").value
             };
 
             try {
                 const response = await fetch(SHEETMONKEY_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
                 if (response.ok) {
-                    alert("Order placed successfully! Check your Google Sheet.");
+                    alert("Order placed successfully! Order logged in your sheet.");
                     cart = [];
                     document.getElementById("checkout-form").reset();
                     renderCart();
                     toggleCartModal(false);
                 } else {
-                    alert("Failed to submit order. Please check your connection.");
+                    alert("Error submitting order.");
                 }
             } catch (err) {
                 console.error(err);
-                alert("Error connecting to SheetMonkey.");
+                alert("Connection error.");
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Place Order & Sync to Sheet";
