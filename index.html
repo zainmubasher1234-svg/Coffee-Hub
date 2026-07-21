@@ -1,316 +1,352 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aura Blend | Premium Artisanal Coffee</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            espresso: '#0B0A0A',
-            charcoal: '#161514',
-            darkCard: '#1E1C1A',
-            gold: {
-              300: '#F3E5AB',
-              400: '#E5C158',
-              500: '#D4AF37',
-              600: '#AA820A'
-            }
-          },
-          fontFamily: {
-            serif: ['Cinzel', 'serif'],
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee-Hub | Aura Blend</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-      }
-    }
-  </script>
-
-  <style>
-    .glass-nav {
-      background: rgba(11, 10, 10, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    }
-    .glass-card {
-      background: rgba(30, 28, 26, 0.5);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(212, 175, 55, 0.12);
-    }
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #997A15 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .gold-button {
-      background: linear-gradient(135deg, #E5C158 0%, #D4AF37 100%);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .gold-button:hover {
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-      transform: translateY(-2px);
-    }
-  </style>
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 3px;
+        }
+    </style>
 </head>
+<body class="bg-gray-950 text-gray-100 font-sans min-h-screen flex flex-col justify-between">
 
-<body class="bg-espresso text-gray-200 font-sans antialiased overflow-x-hidden selection:bg-gold-500 selection:text-black">
+    <!-- NAVIGATION BAR -->
+    <nav class="bg-gray-900 border-b border-gray-800 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid me-2 fa-mug-hot text-amber-500 text-2xl"></i>
+                    <span class="font-bold text-xl tracking-wide text-white">Coffee-Hub</span>
+                </div>
 
-  <!-- GLASSMORPHISM NAVBAR -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3 group">
-        <i data-lucide="coffee" class="w-8 h-8 text-gold-500 transition-transform duration-300 group-hover:rotate-12"></i>
-        <span class="font-serif text-2xl font-bold tracking-wider gold-gradient-text">AURA BLEND</span>
-      </a>
+                <!-- Nav Links -->
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#menu" class="hover:text-amber-500 transition-colors">Menu</a>
+                    <a href="#store" class="hover:text-amber-500 transition-colors">Store Beans</a>
+                    <a href="#about" class="hover:text-amber-500 transition-colors">About Us</a>
+                </div>
 
-      <!-- Main Navigation -->
-      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
-        <a href="#hero" class="text-gold-400 hover:text-gold-300 transition-colors">Home</a>
-        <a href="#menu" class="hover:text-gold-400 transition-colors">Menu</a>
-        <a href="#customize" class="hover:text-gold-400 transition-colors">Customize Coffee</a>
-        <a href="#ai-assistant" class="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-          <i data-lucide="sparkles" class="w-4 h-4 text-gold-400"></i> AI Assistant
-        </a>
-        <a href="#rewards" class="hover:text-gold-400 transition-colors">Rewards</a>
-        <a href="#stores" class="hover:text-gold-400 transition-colors">Stores</a>
-        <a href="#about" class="hover:text-gold-400 transition-colors">About</a>
-      </nav>
-
-      <!-- Right Utility Actions -->
-      <div class="flex items-center gap-5">
-        <button class="p-2 hover:text-gold-400 transition-colors" aria-label="Search"><i data-lucide="search" class="w-5 h-5"></i></button>
-        <button class="p-2 hover:text-gold-400 transition-colors" aria-label="Wishlist"><i data-lucide="heart" class="w-5 h-5"></i></button>
-        <button class="p-2 hover:text-gold-400 transition-colors relative" aria-label="Cart">
-          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-          <span class="absolute top-1 right-1 w-2 h-2 bg-gold-500 rounded-full"></span>
-        </button>
-        <button class="hidden sm:flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider border border-gold-500/40 rounded-full text-gold-400 hover:bg-gold-500/10 transition-colors">
-          <i data-lucide="user" class="w-4 h-4"></i> Login
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO SLIDER SECTION -->
-  <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden pt-20">
-    <!-- Slide Background Image with Overlay -->
-    <div class="absolute inset-0 z-0">
-      <img id="slider-bg" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1920&auto=format&fit=crop" 
-           alt="Premium Coffee" 
-           class="w-full h-full object-cover object-center transition-all duration-1000 transform scale-105" />
-      <div class="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/60 to-transparent"></div>
-      <div class="absolute inset-0 bg-black/40"></div>
-    </div>
-
-    <!-- Hero Content -->
-    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center mt-12">
-      <span id="slide-subtitle-tag" class="inline-block px-4 py-1.5 rounded-full glass-card text-xs font-semibold tracking-widest text-gold-400 uppercase mb-6">
-        Premium Experience
-      </span>
-      <h1 id="slide-title" class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 gold-gradient-text drop-shadow-lg">
-        Every Cup Tells a Story
-      </h1>
-      <p id="slide-desc" class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light">
-        Handcrafted coffee made from the world's finest beans, roasted to perfection.
-      </p>
-      
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-        <a href="#menu" class="gold-button w-full sm:w-auto px-8 py-4 rounded-full text-black font-semibold tracking-wide">
-          Order Now
-        </a>
-        <a href="#explore" class="w-full sm:w-auto px-8 py-4 rounded-full border border-gold-500/50 text-gold-300 font-semibold tracking-wide hover:bg-gold-500/10 transition-colors">
-          Explore Menu
-        </a>
-      </div>
-    </div>
-
-    <!-- Slider Navigation Controls -->
-    <div class="absolute bottom-10 z-20 flex items-center gap-4">
-      <button onclick="changeSlide(0)" class="w-3 h-3 rounded-full bg-gold-500 transition-all cursor-pointer" id="dot-0"></button>
-      <button onclick="changeSlide(1)" class="w-3 h-3 rounded-full bg-gray-600 transition-all cursor-pointer" id="dot-1"></button>
-      <button onclick="changeSlide(2)" class="w-3 h-3 rounded-full bg-gray-600 transition-all cursor-pointer" id="dot-2"></button>
-    </div>
-  </section>
-
-  <!-- BEST SELLERS SECTION -->
-  <section id="menu" class="py-24 px-6 max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
-      <div>
-        <h2 class="text-xs uppercase tracking-widest text-gold-400 font-semibold mb-2">Curated Flavors</h2>
-        <h3 class="font-serif text-3xl md:text-4xl font-bold text-white">Best Sellers</h3>
-      </div>
-      <a href="#" class="text-gold-400 hover:text-gold-300 text-sm font-semibold flex items-center gap-1 mt-4 md:mt-0">
-        View Full Menu <i data-lucide="arrow-right" class="w-4 h-4"></i>
-      </a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Card 1 -->
-      <div class="glass-card rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-2 group">
-        <div class="relative overflow-hidden rounded-xl h-64 mb-6">
-          <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=800&auto=format&fit=crop" alt="Latte" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-          <span class="absolute top-3 right-3 bg-espresso/80 text-gold-400 text-xs px-3 py-1 rounded-full font-semibold border border-gold-500/30">$6.50</span>
+                <!-- Cart Icon -->
+                <button onclick="toggleCartModal(true)" class="relative p-2 text-gray-300 hover:text-white transition-colors">
+                    <i class="fa-solid fa-cart-shopping text-xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-amber-500 text-gray-950 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
         </div>
-        <h4 class="font-serif text-xl font-semibold mb-2 text-white">Golden Honey Latte</h4>
-        <p class="text-gray-400 text-sm mb-4">Espresso infused with organic wildflower honey and oat milk.</p>
-        <button class="w-full py-2.5 rounded-lg border border-gold-500/40 text-gold-400 text-sm font-semibold hover:bg-gold-500 hover:text-black transition-colors">Add to Order</button>
-      </div>
+    </nav>
 
-      <!-- Card 2 -->
-      <div class="glass-card rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-2 group">
-        <div class="relative overflow-hidden rounded-xl h-64 mb-6">
-          <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=800&auto=format&fit=crop" alt="Iced Coffee" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-          <span class="absolute top-3 right-3 bg-espresso/80 text-gold-400 text-xs px-3 py-1 rounded-full font-semibold border border-gold-500/30">$7.00</span>
+    <!-- HERO SECTION -->
+    <section class="relative bg-gray-900 py-20 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-4">
+                Brewed to Perfection, Delivered to You.
+            </h1>
+            <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
+                Explore our signature espresso line-up, craft milk bases, and specialty beans directly integrated with our online order engine.
+            </p>
+            <a href="#menu" class="inline-block bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold px-8 py-3 rounded-xl transition-all transform hover:scale-105">
+                Explore Menu
+            </a>
         </div>
-        <h4 class="font-serif text-xl font-semibold mb-2 text-white">Caramel Reserve Cold Brew</h4>
-        <p class="text-gray-400 text-sm mb-4">Slow-steeped for 20 hours, topped with house-made salted caramel foam.</p>
-        <button class="w-full py-2.5 rounded-lg border border-gold-500/40 text-gold-400 text-sm font-semibold hover:bg-gold-500 hover:text-black transition-colors">Add to Order</button>
-      </div>
+    </section>
 
-      <!-- Card 3 -->
-      <div class="glass-card rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-2 group">
-        <div class="relative overflow-hidden rounded-xl h-64 mb-6">
-          <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=800&auto=format&fit=crop" alt="Espresso" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-          <span class="absolute top-3 right-3 bg-espresso/80 text-gold-400 text-xs px-3 py-1 rounded-full font-semibold border border-gold-500/30">$5.00</span>
+    <!-- MENU SECTION -->
+    <section id="menu" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-white mb-8 border-l-4 border-amber-500 pl-4">Signature Drinks</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="menu-items">
+            <!-- Dynamic Menu Items Populated by JS -->
         </div>
-        <h4 class="font-serif text-xl font-semibold mb-2 text-white">Velvet Dark Mocha</h4>
-        <p class="text-gray-400 text-sm mb-4">Double shot of reserve espresso blended with 70% Belgian chocolate.</p>
-        <button class="w-full py-2.5 rounded-lg border border-gold-500/40 text-gold-400 text-sm font-semibold hover:bg-gold-500 hover:text-black transition-colors">Add to Order</button>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- AI COFFEE EXPERT BANNER -->
-  <section id="ai-assistant" class="py-16 px-6 max-w-7xl mx-auto">
-    <div class="glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-gold-500/20">
-      <div class="max-w-xl z-10">
-        <span class="text-gold-400 text-xs uppercase font-bold tracking-widest flex items-center gap-2 mb-3">
-          <i data-lucide="bot" class="w-4 h-4"></i> AI Powered Experience
-        </span>
-        <h3 class="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">Meet Your Personal Barista AI</h3>
-        <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
-          Not sure what to pick? Tell our AI assistant your taste preferences or mood, and get a tailored beverage suggestion instantly.
+    <!-- STORE SECTION -->
+    <section id="store" class="py-16 bg-gray-900/50 border-t border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 border-l-4 border-amber-500 pl-4">Store Beans</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="store-items">
+                <!-- Dynamic Store Items Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">About Coffee-Hub</h2>
+        <p class="text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Welcome to Coffee-Hub! Dedicated to sourcing artisanal single-origin beans and roasting them to showcase their distinct characteristics. Every order is meticulously prepared and instantly dispatched.
         </p>
-        <button class="gold-button px-6 py-3 rounded-full text-black font-semibold text-sm flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-4 h-4"></i> Ask AI Assistant
-        </button>
-      </div>
-      <div class="z-10 flex-shrink-0">
-        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-gold-500/30 flex items-center justify-center bg-gold-500/5 relative">
-          <i data-lucide="coffee" class="w-16 h-16 text-gold-400 animate-pulse"></i>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 Coffee-Hub. All Rights Reserved.</p>
+    </footer>
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl max-w-lg w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+            
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-gray-800 flex justify-between items-center bg-gray-950">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-shopping-bag text-amber-500"></i> Your Cart
+                </h3>
+                <button onclick="toggleCartModal(false)" class="text-gray-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body / Cart Items -->
+            <div class="p-4 flex-1 overflow-y-auto custom-scrollbar space-y-4" id="cart-contents">
+                <!-- Items render here -->
+            </div>
+
+            <!-- Order Form & Checkout -->
+            <div class="p-4 border-t border-gray-800 bg-gray-950 space-y-4">
+                
+                <!-- Customization Options -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Milk Base</label>
+                        <select id="milk-base" onchange="updateCartCalculations()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2 text-sm focus:outline-none focus:border-amber-500">
+                            <option value="Standard">Standard Whole Milk</option>
+                            <option value="Oat Milk (+Rs 150)">Oat Milk (+Rs 150)</option>
+                            <option value="Almond Milk (+Rs 150)">Almond Milk (+Rs 150)</option>
+                            <option value="Skimmed Milk">Skimmed Milk</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Flavor Shot</label>
+                        <select id="flavor-shot" onchange="updateCartCalculations()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2 text-sm focus:outline-none focus:border-amber-500">
+                            <option value="Standard">None / Standard</option>
+                            <option value="Vanilla (+Rs 100)">Vanilla (+Rs 100)</option>
+                            <option value="Caramel (+Rs 100)">Caramel (+Rs 100)</option>
+                            <option value="Hazelnut (+Rs 100)">Hazelnut (+Rs 100)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contact / Shipping Info -->
+                <form id="checkout-form" onsubmit="handleCheckout(event)" class="space-y-3">
+                    <div>
+                        <input type="text" id="client-name" required placeholder="Full Name" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2 text-sm focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <input type="tel" id="contact-no" required placeholder="Phone Number" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2 text-sm focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <textarea id="shipping-address" required rows="2" placeholder="Delivery Address" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg p-2 text-sm focus:outline-none focus:border-amber-500"></textarea>
+                    </div>
+
+                    <!-- Total Display -->
+                    <div class="flex justify-between items-center py-2 border-t border-b border-gray-800">
+                        <span class="text-gray-400 font-medium">Invoice Total:</span>
+                        <span id="invoice-total" class="text-xl font-extrabold text-amber-500">Rs. 0</span>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold py-3 rounded-xl transition-all">
+                        Place Order & Sync to Sheet
+                    </button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 bg-black pt-16 pb-12 px-6">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-      <div>
-        <span class="font-serif text-xl font-bold gold-gradient-text block mb-4">AURA BLEND</span>
-        <p class="text-gray-400 text-sm leading-relaxed">Redefining luxury coffee through artisanal craft and modern innovation.</p>
-      </div>
-      <div>
-        <h5 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Quick Links</h5>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li><a href="#menu" class="hover:text-gold-400">Our Menu</a></li>
-          <li><a href="#stores" class="hover:text-gold-400">Store Locator</a></li>
-          <li><a href="#rewards" class="hover:text-gold-400">Rewards Program</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Legal</h5>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li><a href="#" class="hover:text-gold-400">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-gold-400">Terms of Service</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Newsletter</h5>
-        <div class="flex gap-2">
-          <input type="email" placeholder="Your email..." class="bg-charcoal px-4 py-2 rounded-lg text-sm text-white focus:outline-none border border-gold-500/20 w-full" />
-          <button class="gold-button px-4 py-2 rounded-lg text-black font-semibold text-sm">Join</button>
-        </div>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto border-t border-white/5 pt-6 text-center text-xs text-gray-500">
-      &copy; 2026 Aura Blend. All rights reserved.
-    </div>
-  </footer>
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // SHEETMONKEY ENDPOINT
+        const SHEETMONKEY_URL = "https://api.sheetmonkey.io/form/iVmP9mkPUuykQ8soGTdF6T";
 
-  <!-- JAVASCRIPT FOR INTERACTION -->
-  <script>
-    // Initialize Lucide Icons
-    lucide.createIcons();
+        // Menu Data
+        const menuProducts = [
+            { id: 1, name: "Aura Espresso", price: 850, desc: "Rich double shot espresso with velvety crema.", category: "menu" },
+            { id: 2, name: "Caramel Macchiato", price: 1150, desc: "Espresso with steamed milk and rich caramel drizzle.", category: "menu" },
+            { id: 3, name: "Iced Spanish Latte", price: 1250, desc: "Condensed milk espresso blend poured over ice.", category: "menu" }
+        ];
 
-    // Hero Slider Data
-    const slides = [
-      {
-        tag: "Premium Experience",
-        title: "Every Cup Tells a Story",
-        desc: "Handcrafted coffee made from the world's finest beans, roasted to perfection.",
-        bg: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1920&auto=format&fit=crop"
-      },
-      {
-        tag: "Seasonal Collection",
-        title: "Seasonal Favorites",
-        desc: "Discover limited-edition drinks crafted exclusively for this season.",
-        bg: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=1920&auto=format&fit=crop"
-      },
-      {
-        tag: "Rewards & AI",
-        title: "Your Personal Coffee Expert",
-        desc: "Experience AI-tailored coffee recommendations matched with exclusive rewards.",
-        bg: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1920&auto=format&fit=crop"
-      }
-    ];
+        // Store Data
+        const storeProducts = [
+            { id: 4, name: "Onyx Eclipse Blend (250g)", price: 2450, desc: "Dark roasted Arabica beans with cacao undertones.", category: "store" },
+            { id: 5, name: "Ethiopian Yirgacheffe (250g)", price: 2800, desc: "Light-medium roast with floral and citrus notes.", category: "store" }
+        ];
 
-    let currentSlide = 0;
+        let cart = [];
 
-    function changeSlide(index) {
-      currentSlide = index;
-      const slide = slides[index];
-      
-      document.getElementById('slide-subtitle-tag').innerText = slide.tag;
-      document.getElementById('slide-title').innerText = slide.title;
-      document.getElementById('slide-desc').innerText = slide.desc;
-      document.getElementById('slider-bg').src = slide.bg;
+        // Render Products
+        function initApp() {
+            const menuContainer = document.getElementById("menu-items");
+            const storeContainer = document.getElementById("store-items");
 
-      // Update Navigation Dots
-      for (let i = 0; i < 3; i++) {
-        const dot = document.getElementById(`dot-${i}`);
-        if (i === index) {
-          dot.classList.replace('bg-gray-600', 'bg-gold-500');
-        } else {
-          dot.classList.replace('bg-gold-500', 'bg-gray-600');
+            menuContainer.innerHTML = menuProducts.map(p => `
+                <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">${p.name}</h3>
+                        <p class="text-gray-400 text-sm mb-4">${p.desc}</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-extrabold text-amber-500">Rs. ${p.price}</span>
+                        <button onclick="addToCart(${p.id})" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            storeContainer.innerHTML = storeProducts.map(p => `
+                <div class="bg-gray-950 border border-gray-800 rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition-all">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">${p.name}</h3>
+                        <p class="text-gray-400 text-sm mb-4">${p.desc}</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-extrabold text-amber-500">Rs. ${p.price}</span>
+                        <button onclick="addToCart(${p.id})" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
-      }
-    }
 
-    // Auto-advance Hero Slider
-    setInterval(() => {
-      currentSlide = (currentSlide + 1) % slides.length;
-      changeSlide(currentSlide);
-    }, 6000);
-  </script>
+        // Cart Actions
+        function addToCart(productId) {
+            const allProducts = [...menuProducts, ...storeProducts];
+            const item = allProducts.find(p => p.id === productId);
+            const existing = cart.find(c => c.id === productId);
+
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+
+            renderCart();
+            toggleCartModal(true);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(c => c.id !== productId);
+            renderCart();
+        }
+
+        function toggleCartModal(show) {
+            document.getElementById("cart-modal").classList.toggle("hidden", !show);
+        }
+
+        function renderCart() {
+            const cartContainer = document.getElementById("cart-contents");
+            document.getElementById("cart-count").innerText = cart.reduce((acc, c) => acc + c.qty, 0);
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `<p class="text-gray-500 text-center py-8">Your cart is empty.</p>`;
+                updateCartCalculations();
+                return;
+            }
+
+            cartContainer.innerHTML = cart.map(item => `
+                <div class="flex justify-between items-center bg-gray-950 p-3 rounded-lg border border-gray-800">
+                    <div>
+                        <h4 class="font-bold text-white text-sm">${item.name}</h4>
+                        <span class="text-xs text-amber-500">Rs. ${item.price} x ${item.qty}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="removeFromCart(${item.id})" class="text-red-400 hover:text-red-300 text-xs">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            updateCartCalculations();
+        }
+
+        function updateCartCalculations() {
+            const baseTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            
+            const milkVal = document.getElementById("milk-base").value;
+            const flavorVal = document.getElementById("flavor-shot").value;
+
+            let extra = 0;
+            if (milkVal.includes("+Rs 150")) extra += 150;
+            if (flavorVal.includes("+Rs 100")) extra += 100;
+
+            const grandTotal = baseTotal > 0 ? baseTotal + extra : 0;
+            document.getElementById("invoice-total").innerText = `Rs. ${grandTotal}`;
+        }
+
+        // SheetMonkey Submission Handler
+        async function handleCheckout(e) {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                alert("Please add items to your cart before placing an order!");
+                return;
+            }
+
+            const submitBtn = document.getElementById("submit-btn");
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Syncing Order...";
+
+            const orderItems = cart.map(c => `${c.name} (x${c.qty})`).join(", ");
+            const milkBases = document.getElementById("milk-base").value;
+            const flavorShots = document.getElementById("flavor-shot").value;
+            const invoiceTotal = document.getElementById("invoice-total").innerText;
+            const clientName = document.getElementById("client-name").value;
+            const contactNo = document.getElementById("contact-no").value;
+            const shippingAddress = document.getElementById("shipping-address").value;
+
+            const payload = {
+                Order_Items: orderItems,
+                Milk_Bases: milkBases,
+                Flavor_Shots: flavorShots,
+                Invoice_Total: invoiceTotal,
+                Client_Name: clientName,
+                Contact_No: contactNo,
+                Shipping_Address: shippingAddress
+            };
+
+            try {
+                const response = await fetch(SHEETMONKEY_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    alert("Order placed successfully! Check your Google Sheet.");
+                    cart = [];
+                    document.getElementById("checkout-form").reset();
+                    renderCart();
+                    toggleCartModal(false);
+                } else {
+                    alert("Failed to submit order. Please check your SheetMonkey connection.");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Error connecting to SheetMonkey.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Place Order & Sync to Sheet";
+            }
+        }
+
+        // Initialize on load
+        window.onload = initApp;
+    </script>
 </body>
 </html>
